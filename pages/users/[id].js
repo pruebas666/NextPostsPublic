@@ -1,7 +1,17 @@
 import Layout from '../../components/Layout';
 import Title from '../../components/Title';
+import { useRouter } from 'next/router';
 
 export default function User({user}) {
+
+  const router = useRouter();
+
+
+  if (router.isFallback) {
+    return <div>CARGANDO....</div>
+  }
+
+
   return (<div>
       <Layout>
           <Title>Usuario - {user.id}</Title>
@@ -53,7 +63,7 @@ export async function getStaticPaths() {
   // const paths = [
   //   { params: { id: '1' } },
   //   { params: { id: '2' } },
-  // ];
+  // ]; 
 
   const paths = users.map(user => {
     return {

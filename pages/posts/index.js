@@ -8,7 +8,8 @@ export default function Posts({posts}) {
       <Title>Los Posts</Title>
       <div className="grid">
       {posts.map(post =>{
-          return <div className="card">
+        
+          return <div key={post.id} className="card">
               <Link href={`/posts/${post.id}`}>
               <a>
                 <h1>{post.id} - {post.title}</h1>
